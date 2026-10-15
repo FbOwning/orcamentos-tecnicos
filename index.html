@@ -101,11 +101,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 10px;
+      padding: 10px 12px;
       background: #f9fafb;
       border: 1px solid var(--border);
       border-radius: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       cursor: pointer;
       transition: background 0.15s, border-color 0.15s;
     }
@@ -123,7 +123,7 @@
     .service-info {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .service-info input[type="checkbox"] {
@@ -133,13 +133,13 @@
     }
 
     .service-title {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #111827;
     }
 
     .service-desc {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
@@ -148,17 +148,6 @@
       font-size: 0.95rem;
       color: var(--primary);
       white-space: nowrap;
-    }
-
-    .badge-discount {
-      background: #dcfce7;
-      color: #166534;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      display: inline-block;
-      margin-top: 6px;
     }
 
     .toggle-row {
@@ -195,7 +184,7 @@
       background: #374151;
     }
 
-    /* PREVIEW DOCUMENTO */
+    /* PREVIEW DO DOCUMENTO / IMPRESSÃO */
     #document-preview {
       background: #ffffff;
       padding: 30px;
@@ -214,7 +203,7 @@
     }
 
     .doc-brand h1 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       color: var(--primary);
       font-weight: 800;
     }
@@ -232,7 +221,6 @@
       font-size: 1.15rem;
       color: #111827;
       margin-bottom: 2px;
-      justify-content: flex-end;
     }
 
     .doc-table {
@@ -255,7 +243,7 @@
     }
 
     .doc-totals {
-      width: 60%;
+      width: 65%;
       margin-left: auto;
       margin-top: 10px;
       border-collapse: collapse;
@@ -296,7 +284,7 @@
     <!-- COLUNA DE CONFIGURAÇÃO -->
     <div>
       <div class="card">
-        <h2>🛠️ Painel de Orçamento & O.S.</h2>
+        <h2>🛠️ Dados do Atendimento</h2>
         
         <div class="form-group">
           <label>Tipo de Documento:</label>
@@ -309,7 +297,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
           <div class="form-group">
             <label>Nome do Cliente:</label>
-            <input type="text" id="clientName" value="Cliente Particular" oninput="renderDocument()">
+            <input type="text" id="clientName" placeholder="Nome completo do cliente" oninput="renderDocument()">
           </div>
           <div class="form-group">
             <label>Telefone do Cliente:</label>
@@ -318,25 +306,26 @@
         </div>
 
         <div class="form-group">
-          <label>Equipamento / Aparelho:</label>
-          <input type="text" id="deviceModel" placeholder="Ex: Notebook HP Pavilion g4 / PC Desktop Gamer" oninput="renderDocument()">
+          <label>Equipamento / Modelo:</label>
+          <input type="text" id="deviceModel" placeholder="Ex: Notebook Dell Inspiron / PC Desktop Gamer" oninput="renderDocument()">
         </div>
 
-        <div class="form-group" id="problemRow">
-          <label>Defeito Reclamado / Relato do Cliente:</label>
-          <input type="text" id="reportedProblem" placeholder="Ex: Não liga / Lentidão / Sem vídeo" oninput="renderDocument()">
+        <div class="form-group">
+          <label>Defeito Reclamado / Solicitação:</label>
+          <input type="text" id="reportedProblem" placeholder="Ex: Sistema lento, aquecendo e pedindo formatação" oninput="renderDocument()">
         </div>
       </div>
 
-      <!-- CATÁLOGO DE SERVIÇOS -->
+      <!-- CATÁLOGO GERAL DE SERVIÇOS TÉCNICOS -->
       <div class="card">
-        <h2>📋 Serviços Técnicos Prestados</h2>
+        <h2>📋 Serviços Prestados</h2>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">
-          Selecione os serviços desejados. O desconto de pacote é aplicado automaticamente conforme mais itens são somados.
+          Marque os serviços que serão realizados. O combo aplica desconto progressivo automaticamente conforme mais serviços são adicionados:
+          <br><strong>2 serviços = 10% OFF | 3 serviços = 15% OFF | 4 ou mais = 20% OFF</strong>
         </p>
 
-        <!-- FORMATAÇÃO E SOFTWARES -->
-        <div class="category-title">💻 Formatação & Sistemas</div>
+        <!-- FORMATAÇÃO E SISTEMAS -->
+        <div class="category-title">💻 Formatação & Sistemas Operacionais</div>
         <div id="services-software"></div>
 
         <!-- LIMPEZA E MANUTENÇÃO -->
@@ -344,17 +333,17 @@
         <div id="services-limpeza"></div>
 
         <!-- UPGRADES -->
-        <div class="category-title">⚡ Upgrades & Peças</div>
+        <div class="category-title">⚡ Upgrades & Instalação de Hardware</div>
         <div id="services-upgrades"></div>
 
-        <!-- ELETRÔNICA E REPAROS ESPECIAIS -->
-        <div class="category-title">🔬 Eletrônica & Reparos Avançados</div>
-        <div id="services-eletronica"></div>
+        <!-- DIAGNÓSTICO E REPARO -->
+        <div class="category-title">🔬 Diagnóstico & Reparo de Placa</div>
+        <div id="services-diagnostico"></div>
 
-        <!-- SERVIÇO EXTRA PERSONALIZADO -->
-        <div class="category-title">➕ Adicionar Serviço Personalizado</div>
+        <!-- SERVIÇO AVULSO -->
+        <div class="category-title">➕ Adicionar Outro Serviço Avulso</div>
         <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 8px; margin-top: 6px;">
-          <input type="text" id="customServiceName" placeholder="Nome do serviço">
+          <input type="text" id="customServiceName" placeholder="Descrição do serviço">
           <input type="number" id="customServicePrice" placeholder="R$ Valor">
           <button type="button" class="btn-action" style="margin-top: 0; padding: 0 16px;" onclick="addCustomService()">Adicionar</button>
         </div>
@@ -362,10 +351,10 @@
 
       <!-- DESLOCAMENTO NINJA 300 -->
       <div class="card">
-        <h2>🏍️ Deslocamento (Ninja 300)</h2>
+        <h2>🏍️ Coleta & Entrega (Ninja 300)</h2>
         <div class="toggle-row">
           <input type="checkbox" id="enableDelivery" style="width: 20px; height: 20px;" onchange="renderDocument()">
-          <label for="enableDelivery" style="margin: 0; font-size: 0.95rem; cursor: pointer;">Cobrar Taxa de Coleta / Entrega em Domicílio</label>
+          <label for="enableDelivery" style="margin: 0; font-size: 0.95rem; cursor: pointer;">Adicionar taxa de busca / entrega em domicílio</label>
         </div>
 
         <div id="deliveryFields" style="display: none; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
@@ -374,17 +363,17 @@
             <input type="number" id="distKm" value="5" min="1" oninput="renderDocument()">
           </div>
           <div class="form-group">
-            <label>Tipo de Viagem:</label>
+            <label>Percurso:</label>
             <select id="tripType" onchange="renderDocument()">
-              <option value="2">Ida e Volta (1 Viagem - 2x)</option>
-              <option value="4">Buscar e Entregar (2 Viagens - 4x)</option>
+              <option value="2">1 Viagem (Ida e Volta)</option>
+              <option value="4">2 Viagens (Coleta + Entrega final)</option>
             </select>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- COLUNA DE VISUALIZAÇÃO E AÇÕES -->
+    <!-- COLUNA DE VISUALIZAÇÃO E PDF -->
     <div>
       <div class="card" style="position: sticky; top: 16px;">
         <div style="display: flex; gap: 10px; margin-bottom: 12px;">
@@ -392,47 +381,49 @@
           <button class="btn-action btn-secondary" onclick="window.print()">🖨️ Imprimir</button>
         </div>
 
-        <!-- ÁREA QUE SERÁ IMPRESSA / GERADA EM PDF -->
+        <!-- DOCUMENTO RENDERIZADO -->
         <div id="document-preview"></div>
       </div>
     </div>
   </div>
 
   <script>
-    // CATÁLOGO DE SERVIÇOS TÉCNICOS PRÉ-CONFIGURADOS
+    // GRADE OFICIAL DE SERVIÇOS PRESTADOS
     const CATALOG = [
-      // Softwares
-      { id: 'f_basica', cat: 'software', name: 'Formatação Simples + Drivers', desc: 'Instalação limpa do Windows, drivers oficiais, navegadores e utilitários.', price: 120 },
-      { id: 'f_avancada', cat: 'software', name: 'Formatação Completa com Backup de Dados', desc: 'Backup integral de arquivos, reinstalação do Windows/macOS e restauração.', price: 160 },
-      { id: 'office_config', cat: 'software', name: 'Instalação e Configuração de Produtividade / Office', desc: 'Instalação manual de versão estável compatível e bloqueio de updates conflitantes.', price: 80 },
-      
-      // Limpeza
-      { id: 'limp_basica', cat: 'limpeza', name: 'Limpeza Básica de Gabinete / Notebook', desc: 'Remoção mecânica de poeira superficial, desobstrução de cooler e dutos.', price: 80 },
-      { id: 'limp_completa', cat: 'limpeza', name: 'Manutenção Preventiva Profunda + Troca de Pasta Térmica', desc: 'Desmontagem total, desoxidação de contatos de memória/slots e aplicação de pasta térmica de alta performance.', price: 140 },
+      // SISTEMAS & SOFTWARES
+      { id: 'f_basica', cat: 'software', name: 'Formatação Simples (Windows 10 / 11)', desc: 'Instalação limpa do sistema operacional, drivers atualizados e utilitários essenciais.', price: 120 },
+      { id: 'f_backup', cat: 'software', name: 'Formatação Completa com Backup de Arquivos', desc: 'Backup seguro de documentos e fotos, formatação limpa e restauração na máquina.', price: 160 },
+      { id: 'otimizacao', cat: 'software', name: 'Otimização de Sistema & Remoção de Vírus', desc: 'Limpeza profunda de malware, desativação de programas pesados e aceleração de inicialização.', price: 80 },
 
-      // Upgrades
-      { id: 'up_ssd', cat: 'upgrades', name: 'Instalação de SSD / Memória RAM + Clonagem', desc: 'Instalação física de drive SSD/NVMe ou memória, sem perda de arquivos (clonagem do sistema).', price: 90 },
+      // LIMPEZA & PREVENTIVA
+      { id: 'limp_basica', cat: 'limpeza', name: 'Limpeza Básica / Higienização Externa', desc: 'Desobstrução rápida de poeira superficial de coolers e saídas de ar.', price: 70 },
+      { id: 'limp_avancada_pc', cat: 'limpeza', name: 'Manutenção Preventiva Completa - Desktop', desc: 'Desmontagem, limpeza minuciosa de gabinete e fans, desoxidação de contatos de memória e troca de pasta térmica.', price: 120 },
+      { id: 'limp_avancada_note', cat: 'limpeza', name: 'Manutenção Preventiva Completa - Notebook', desc: 'Abertura técnica, desobstrução do dissipador, troca de pasta térmica de alta performance e lubrificação do cooler.', price: 140 },
 
-      // Eletrônica
-      { id: 'diag_pc', cat: 'eletronica', name: 'Diagnóstico Avançado de Bancada (Placa-Mãe / Vídeo)', desc: 'Testes a frio e medição com multímetro de linhas de tensão e sinais de start.', price: 150 },
-      { id: 'reparo_eletro', cat: 'eletronica', name: 'Reparo Eletromecânico / Calibração Térmica', desc: 'Abertura técnica, desoxidação e calibração de contatos bimetálicos/termostatos.', price: 80 }
+      // UPGRADES & HARDWARE
+      { id: 'up_ssd_clonagem', cat: 'upgrades', name: 'Upgrade para SSD + Clonagem do Sistema', desc: 'Instalação física de SSD SATA/NVMe com cópia idêntica do sistema atual (sem perder nada).', price: 100 },
+      { id: 'up_ram', cat: 'upgrades', name: 'Instalação / Upgrade de Memória RAM', desc: 'Instalação de pentes de memória e teste de estresse de estabilidade.', price: 50 },
+      { id: 'montagem_pc', cat: 'upgrades', name: 'Montagem Completa de PC / Cable Management', desc: 'Montagem do zero com alinhamento e organização profissional de cabos no gabinete.', price: 200 },
+
+      // DIAGNÓSTICO & ELETRÔNICA
+      { id: 'diag_bancada', cat: 'diagnostico', name: 'Diagnóstico Avançado de Bancada (Sem Vídeo / Não Liga)', desc: 'Testes de bancada a frio, isolamento de componentes e medição com multímetro.', price: 130 },
+      { id: 'reparo_jack', cat: 'diagnostico', name: 'Troca / Reparo de Conector DC Jack de Notebook', desc: 'Desmontagem e substituição/reparo do conector interno de carga.', price: 120 }
     ];
 
     let customServices = [];
-    let selectedServiceIds = new Set(['f_avancada', 'limp_completa']); // Pré-selecionados de exemplo
+    let selectedServiceIds = new Set(); // Começa totalmente LIMPO, sem serviços pré-selecionados
 
-    // Renderiza a lista de opções na tela
     function buildServiceLists() {
       const catMap = {
         software: document.getElementById('services-software'),
         limpeza: document.getElementById('services-limpeza'),
         upgrades: document.getElementById('services-upgrades'),
-        eletronica: document.getElementById('services-eletronica')
+        diagnostico: document.getElementById('services-diagnostico')
       };
 
       CATALOG.forEach(s => {
         const div = document.createElement('div');
-        div.className = `service-item ${selectedServiceIds.has(s.id) ? 'active' : ''}`;
+        div.className = 'service-item';
         div.id = `item-${s.id}`;
         div.onclick = (e) => {
           if (e.target.type !== 'checkbox') {
@@ -444,7 +435,7 @@
 
         div.innerHTML = `
           <div class="service-info">
-            <input type="checkbox" ${selectedServiceIds.has(s.id) ? 'checked' : ''} onchange="toggleService('${s.id}', this.checked)">
+            <input type="checkbox" onchange="toggleService('${s.id}', this.checked)">
             <div>
               <div class="service-title">${s.name}</div>
               <div class="service-desc">${s.desc}</div>
@@ -471,11 +462,11 @@
       const name = document.getElementById('customServiceName').value.trim();
       const price = parseFloat(document.getElementById('customServicePrice').value);
       if (!name || isNaN(price) || price <= 0) {
-        alert('Informe um nome e valor válidos para o serviço.');
+        alert('Informe a descrição e o valor do serviço.');
         return;
       }
       const customId = 'custom_' + Date.now();
-      customServices.push({ id: customId, name, desc: 'Serviço personalizado sob demanda.', price });
+      customServices.push({ id: customId, name, desc: 'Serviço sob demanda técnica.', price });
       selectedServiceIds.add(customId);
 
       document.getElementById('customServiceName').value = '';
@@ -483,7 +474,6 @@
       renderDocument();
     }
 
-    // LÓGICA DE CÁLCULO DE PACOTES E DESLOCAMENTO
     function calculateTotals() {
       let activeItems = [];
 
@@ -500,14 +490,14 @@
 
       // REGRA DE COMBO PROGRESSIVO
       let discountPct = 0;
-      if (count === 2) discountPct = 0.10; // 10%
-      else if (count === 3) discountPct = 0.15; // 15%
-      else if (count >= 4) discountPct = 0.20; // 20%
+      if (count === 2) discountPct = 0.10; // 10% de desconto
+      else if (count === 3) discountPct = 0.15; // 15% de desconto
+      else if (count >= 4) discountPct = 0.20; // 20% de desconto
 
       const discountValue = subtotalMaoDeObra * discountPct;
       const maoDeObraFinal = subtotalMaoDeObra - discountValue;
 
-      // CÁLCULO NINJA 300 (Deslocamento)
+      // CÁLCULO TAXA NINJA 300
       let deliveryFee = 0;
       const enableDelivery = document.getElementById('enableDelivery').checked;
       document.getElementById('deliveryFields').style.display = enableDelivery ? 'grid' : 'none';
@@ -517,14 +507,13 @@
         const multiplier = parseInt(document.getElementById('tripType').value) || 2;
         const totalKm = distKm * multiplier;
 
-        const consumoKmL = 22; // Média urbana Ninja 300
+        const consumoKmL = 22; // Média urbana Kawasaki Ninja 300
         const precoGasolina = 6.00;
         const custoCombustivel = (totalKm / consumoKmL) * precoGasolina;
-        const desgastePorKm = 0.45; // Pneu, óleo, relação, manutenção
-        const taxaBaseSaida = 10.00; // Tempo e prontidão técnica
+        const desgastePorKm = 0.45; // Desgaste pneu, óleo, relação
+        const taxaBaseSaida = 10.00; // Prontidão e tempo
 
-        deliveryFee = taxaBaseSaida + custoCombustivel + (totalKm * desgastePorKm);
-        deliveryFee = Math.ceil(deliveryFee); // Arredonda para número inteiro
+        deliveryFee = Math.ceil(taxaBaseSaida + custoCombustivel + (totalKm * desgastePorKm));
       }
 
       const totalGeral = maoDeObraFinal + deliveryFee;
@@ -543,16 +532,16 @@
 
     function renderDocument() {
       const docType = document.getElementById('docType').value;
-      const clientName = document.getElementById('clientName').value || 'Cliente Particular';
-      const clientPhone = document.getElementById('clientPhone').value || 'Não informado';
-      const deviceModel = document.getElementById('deviceModel').value || 'Equipamento de Informática / Eletrônico';
-      const reportedProblem = document.getElementById('reportedProblem').value || 'Manutenção Preventiva / Corretiva solicitada.';
+      const clientName = document.getElementById('clientName').value.trim() || 'A definir';
+      const clientPhone = document.getElementById('clientPhone').value.trim() || 'Não informado';
+      const deviceModel = document.getElementById('deviceModel').value.trim() || 'Não especificado';
+      const reportedProblem = document.getElementById('reportedProblem').value.trim() || 'Conforme solicitação do cliente.';
 
       const dateStr = new Date().toLocaleDateString('pt-BR');
       const calc = calculateTotals();
 
       const isOS = docType === 'os';
-      const docTitle = isOS ? 'ORDEM DE SERVIÇO (O.S.)' : 'ORÇAMENTO COMERCIAL';
+      const docTitle = isOS ? 'ORDEM DE SERVIÇO (O.S.)' : 'ORÇAMENTO TÉCNICO';
 
       let itemsRows = '';
       calc.activeItems.forEach(item => {
@@ -568,7 +557,7 @@
       });
 
       if (calc.activeItems.length === 0) {
-        itemsRows = `<tr><td colspan="2" style="text-align: center; color: #9ca3af; padding: 20px;">Nenhum serviço selecionado.</td></tr>`;
+        itemsRows = `<tr><td colspan="2" style="text-align: center; color: #9ca3af; padding: 25px;">Nenhum serviço selecionado no momento.</td></tr>`;
       }
 
       let discountRow = '';
@@ -585,35 +574,34 @@
       if (calc.deliveryFee > 0) {
         deliveryRow = `
           <tr>
-            <td style="text-align: right;">Taxa de Coleta / Entrega (Deslocamento):</td>
+            <td style="text-align: right;">Taxa de Coleta / Entrega:</td>
             <td style="text-align: right; font-weight: 600;">R$ ${calc.deliveryFee.toFixed(2).replace('.', ',')}</td>
           </tr>
         `;
       }
 
-      const warrantyClause = isOS ? `
+      const footerSection = isOS ? `
         <div style="margin-top: 24px; padding: 12px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 0.75rem; color: #374151;">
-          <strong>Termos de Garantia e Responsabilidade:</strong><br>
-          • Garantia legal de 90 (noventa) dias sobre os serviços técnicos descritos acima, conforme Art. 26 do CDC.<br>
-          • A garantia não cobre danos decorrentes de quedas físicas, picos de tensão na rede elétrica, derramamento de líquidos, infestação biológica ou violação por terceiros.<br>
-          • No caso de aparelhos elétricos/termostatos, a garantia é restrita ao ajuste e reparo dos contatos efetuados na data deste registro.
+          <strong>Termos de Garantia:</strong><br>
+          • Garantia legal de 90 dias sobre a mão de obra dos serviços discriminados nesta Ordem de Serviço.<br>
+          • A garantia não cobre danos causados por picos ou descargas elétricas, quedas físicas, derramamento de líquidos ou intervenções de terceiros.
         </div>
         <div class="doc-signatures">
-          <div class="signature-line">Assinatura do Técnico Responsável</div>
+          <div class="signature-line">Assinatura do Técnico</div>
           <div class="signature-line">Assinatura do Cliente</div>
         </div>
       ` : `
         <div style="margin-top: 24px; font-size: 0.78rem; color: #6b7280; text-align: center;">
-          Validade desta proposta: 10 dias corridos a partir da data de emissão.
+          Validade deste orçamento: 10 dias corridos a partir da data de emissão.
         </div>
       `;
 
       document.getElementById('document-preview').innerHTML = `
         <div class="doc-header">
           <div class="doc-brand">
-            <h1>ASSISTÊNCIA TÉCNICA ESPECIALIZADA</h1>
-            <p>Manutenção, Hardware, Sistemas & Eletroeletrônicos</p>
-            <p><strong>Contato / Suporte: (47) 99123-3370</strong></p>
+            <h1>ASSISTÊNCIA TÉCNICA EM INFORMÁTICA</h1>
+            <p>Manutenção, Hardware, Sistemas & Upgrades</p>
+            <p><strong>Contato / WhatsApp: (47) 99123-3370</strong></p>
           </div>
           <div class="doc-type">
             <h2>${docTitle}</h2>
@@ -628,14 +616,14 @@
           </div>
           <div>
             <strong>Equipamento:</strong> ${deviceModel}<br>
-            <strong>Diagnóstico / Relato:</strong> ${reportedProblem}
+            <strong>Defeito / Solicitação:</strong> ${reportedProblem}
           </div>
         </div>
 
         <table class="doc-table">
           <thead>
             <tr>
-              <th>Descrição do Serviço / Tarefas Técnicas</th>
+              <th>Descrição do Serviço</th>
               <th style="text-align: right;">Valor</th>
             </tr>
           </thead>
@@ -646,7 +634,7 @@
 
         <table class="doc-totals">
           <tr>
-            <td style="text-align: right;">Subtotal de Mão de Obra:</td>
+            <td style="text-align: right;">Subtotal Serviços:</td>
             <td style="text-align: right; width: 110px;">R$ ${calc.subtotalMaoDeObra.toFixed(2).replace('.', ',')}</td>
           </tr>
           ${discountRow}
@@ -657,7 +645,7 @@
           </tr>
         </table>
 
-        ${warrantyClause}
+        ${footerSection}
       `;
     }
 
@@ -677,7 +665,6 @@
       html2pdf().set(opt).from(element).save();
     }
 
-    // Inicialização
     buildServiceLists();
     renderDocument();
   </script>
